@@ -1,0 +1,42 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Editors
+.idea
+.vscode
+*.iml
+
+# Dependency directories
+node_modules
+
+# Optional npm cache directory
+.npm
+
+# Build files
+build
+!/src/dev-panel/dev-panel/summary/build
+/scripts/visual-regressions/target
+storybook-static
+
+# Pact fragments
+/pacts
+
+# Test reports
+/test-reports
+/.nyc_output
+/junit-security-scan.xml
+/security-scan.txt
+
+# Generated files
+/.storybook/generated-stories-index.js
+extracted-i18n-strings.json
+
+# OS hidden files
+.DS_Store
+
+# Caches
+/.happypack
+/scripts/visual-regressions/.happypack
+/.uglify
