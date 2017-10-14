@@ -28,12 +28,16 @@ while True:  # Stop program by pressing touch sensor button
         exit()  # Stop the program.
 
     distance = ir.value()
-    color = cs.value()
+    color = -1
 
     if distance < 25:
         Leds.set_color(Leds.LEFT, Leds.RED)
         mA.run_forever(speed_sp=-200)
-        print("Color=" + colors[color])
+        newColor = cs.value()
+        if color != newColor:
+            print("Color=" + colors[newColor])
+            Sound.speak(colors[newColor]).wait()
+            color = newColor
     else:
         Leds.set_color(Leds.LEFT, Leds.GREEN)
         mA.stop(stop_action="coast")
