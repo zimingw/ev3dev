@@ -7,7 +7,9 @@ from ev3dev.ev3 import *
 ir = InfraredSensor()
 btn = Button();
 mA = MediumMotor('outA')
+cs = ColorSensor()
 assert ir.connected, "Connect a single infrared sensor to any sensor port"
+assert cs.connected, "Connect a color sensor to any sensor port"
 
 # Put the infrared sensor into proximity mode.
 ir.mode = 'IR-PROX'
@@ -23,10 +25,12 @@ while True:    # Stop program by pressing touch sensor button
         exit()  # Stop the program.
 
     distance = ir.value()
+    color = cs.value()
+    print("Color=" + str(color))
 
-    if distance < 30:
+    if distance < 25:
         Leds.set_color(Leds.LEFT, Leds.RED)
-        mA.run_forever(speed_sp=200)
+        mA.run_forever(speed_sp=-200)
     else:
         Leds.set_color(Leds.LEFT, Leds.GREEN)
         mA.stop(stop_action="coast")
