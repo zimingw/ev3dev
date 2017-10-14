@@ -16,6 +16,7 @@ ir.mode = 'IR-PROX'
 cs.mode = 'COL-COLOR'
 
 colors = ('unknown', 'black', 'blue', 'green', 'yellow', 'red', 'white', 'brown')
+color = -1
 
 while True:  # Stop program by pressing touch sensor button
     # Infrared sensor in proximity mode will measure distance to the closest
@@ -28,7 +29,6 @@ while True:  # Stop program by pressing touch sensor button
         exit()  # Stop the program.
 
     distance = ir.value()
-    color = -1
 
     if distance < 25:
         Leds.set_color(Leds.LEFT, Leds.RED)
